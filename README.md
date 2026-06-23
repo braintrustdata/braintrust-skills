@@ -12,7 +12,7 @@ GitHub Copilot, opencode, and any other tool that reads the open skill format.
 
 | Skill | Description |
 | --- | --- |
-| [`agent-self-improvement`](./skills/agent-self-improvement/SKILL.md) | Turn an instrumented agent's production traces into an offline eval loop: mine bad traces, build a failure taxonomy, capture cases in a remote Braintrust dataset, write scorers and an eval, iterate on prompts/tools, and only then push online scorers. |
+| [`agent-auto-improvement`](./skills/agent-auto-improvement/SKILL.md) | Turn an instrumented agent's production traces into an offline eval loop: mine bad traces, build a failure taxonomy, capture cases in a remote Braintrust dataset, write scorers and an eval, iterate on prompts/tools, and only then push online scorers. |
 
 More skills will be added here over time.
 
@@ -39,7 +39,7 @@ into the correct directory for your agent automatically:
 
 ```bash
 # Pick your agent: claude-code | codex | cursor | gemini | antigravity
-gh skill install braintrustdata/braintrust-skills agent-self-improvement --agent claude-code
+gh skill install braintrustdata/braintrust-skills agent-auto-improvement --agent claude-code
 ```
 
 ### skills.sh
@@ -72,9 +72,9 @@ agent's skills directory.
 ## Using a skill
 
 Once installed, ask your agent to do the thing the skill describes — for the
-`agent-self-improvement` skill, e.g. *"write evals for my agent's first tool call"* or
-*"set up a self-improvement loop for the routing decision"*. In Claude Code you can also
-invoke a skill directly by name, e.g. `/agent-self-improvement`.
+`agent-auto-improvement` skill, e.g. *"write evals for my agent's first tool call"* or
+*"set up an auto-improvement loop for the routing decision"*. In Claude Code you can also
+invoke a skill directly by name, e.g. `/agent-auto-improvement`.
 
 ## License
 

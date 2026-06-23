@@ -1,9 +1,9 @@
 ---
-name: agent-self-improvement
-description: "Improve any Braintrust-instrumented agent by turning production traces into an offline eval loop: mine bad traces, build a failure taxonomy, capture cases in a remote Braintrust dataset, write scorers and an eval file, iterate on prompts/tools, and only then push online scorers. Use when the user wants to write evals for their agent, fix recurring production failures, or set up a self-improvement loop for an LLM app."
+name: agent-auto-improvement
+description: "Improve any Braintrust-instrumented agent by turning production traces into an offline eval loop: mine bad traces, build a failure taxonomy, capture cases in a remote Braintrust dataset, write scorers and an eval file, iterate on prompts/tools, and only then push online scorers. Use when the user wants to write evals for their agent, fix recurring production failures, or set up an auto-improvement loop for an LLM app."
 ---
 
-# Agent self-improvement with Braintrust evals
+# Agent auto-improvement with Braintrust evals
 
 ## Goal
 
