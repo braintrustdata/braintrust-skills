@@ -67,8 +67,10 @@ Three open prompts (answer in prose), plus one quick config pick:
    answer looks like, any domains/edge cases to cover.)
 3. **Describe what scores you'd like to see.** (What does "good" mean here? What
    failures matter most?)
-4. **Which language should the eval be written in?** Python or TypeScript — the SDK
-   supports both. This drives the scorer and trace code that gets generated.
+4. **Which language should the eval be written in?** Braintrust ships full SDKs —
+   tracing, the `Eval()` framework, and scorers — in **Python, TypeScript, Go,
+   Java, Ruby, and C#**. Surface all six and **default to Python** unless the user
+   picks another. This drives the scorer and trace code that gets generated.
 
 Read the answers back as a short restatement so the user can correct you before
 you plan anything.
@@ -255,9 +257,10 @@ it, because a first implementation is usually not fully correct.
 For plots and heavier slicing, point the user to the **`braintrust-analyze`** skill
 (BTQL, cached pulls, Braintrust-styled charts) — it continues the running log below.
 
-**Turning the log into a blog?** Follow `references/blog-writing.md` — every
-technical term gets a one-sentence plain-English explanation and a link on first
-mention, and drafting follows your team's writing voice and style guidelines.
+**Writing it up for readers?** That's a separate step from running the eval. Keep
+the `ANALYSIS-SUMMARY.md` blog-ready as you go — every technical term explained in
+plain English, dataset provenance noted, numbers pulled from Braintrust rather than
+memory — then hand it to your team's writing workflow.
 
 **Agentic-eval analysis menu** (stats worth computing beyond score means —
 pick what the experiment makes interesting):
@@ -377,6 +380,4 @@ Authored inside this skill folder, loaded on demand:
 - `references/dataset-mapping.md` — the `to_record` mapping recipes
 - `references/subprocess-tracing.md` — full agent-internals tracing for
   `claude -p` subprocess evals (trace-claude-code plugin recipe + failure catalog)
-- `references/blog-writing.md` — turning `ANALYSIS-SUMMARY.md` into a blog
-  (jargon rule, provenance blurb, voice skills)
 - `references/bt-setup.md`, `references/bt-auth.md` — install + org-scoped keys
