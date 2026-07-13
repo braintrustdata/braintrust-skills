@@ -13,6 +13,8 @@ GitHub Copilot, opencode, and any other tool that reads the open skill format.
 | Skill | Description |
 | --- | --- |
 | [`agent-auto-improvement`](./skills/agent-auto-improvement/SKILL.md) | Turn an instrumented agent's production traces into an offline eval loop: mine bad traces, build a failure taxonomy, capture cases in a remote Braintrust dataset, write scorers and an eval, iterate on prompts/tools, and only then push online scorers. |
+| [`braintrust-eval`](./skills/braintrust-eval/SKILL.md) | Run an independent, end-to-end eval — from a plain-English idea to a scored, compared experiment. Guides dataset sourcing (existing vs. synthetic), scorer design with approval gates, and a hygienic run (smoke test then delete, trials for small datasets, version-first naming, verify-completion). |
+| [`braintrust-analyze`](./skills/braintrust-analyze/SKILL.md) | Pull, analyze, and visualize finished experiments/logs: compute the right statistics (Wilson CIs, paired significance, Spearman judge validation), control for confounds before ranking (micro vs. macro, coverage gates), and write findings into a running summary. |
 
 More skills will be added here over time.
 
