@@ -19,6 +19,7 @@ GitHub Copilot, opencode, and any other tool that reads the open skill format.
 | [`braintrust-topics-workflow`](./skills/braintrust-topics-workflow/SKILL.md) | Configure and evaluate Topics pipelines, including preprocessors, facets, clustering, and historical processing. |
 | [`braintrust-pattern-analysis`](./skills/braintrust-pattern-analysis/SKILL.md) | Investigate recurring behaviors in project traces and create or update Patterns with validated evidence. |
 | [`braintrust-patterns-slack-digest`](./skills/braintrust-patterns-slack-digest/SKILL.md) | Build and deliver a ranked Slack digest after a scheduled Patterns analysis. |
+| [`pii-scrubbing`](./skills/pii-scrubbing/SKILL.md) | Connect the export hook and traverse span fields, then apply the requested scrubbing logic or ask if unspecified. Includes LLM message-redaction examples for Python/TypeScript native and OpenTelemetry, Java, Go, and Ruby. |
 
 More skills will be added here over time.
 
@@ -27,7 +28,8 @@ More skills will be added here over time.
 ```
 skills/
 └── <skill-name>/
-    └── SKILL.md   # YAML frontmatter (name, description) + markdown body
+    ├── SKILL.md   # YAML frontmatter (name, description) + markdown body
+    └── references/ # Optional language examples and detailed guidance
 ```
 
 ## Prerequisites
