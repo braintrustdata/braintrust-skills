@@ -13,6 +13,12 @@ GitHub Copilot, opencode, and any other tool that reads the open skill format.
 | Skill | Description |
 | --- | --- |
 | [`agent-auto-improvement`](./skills/agent-auto-improvement/SKILL.md) | Turn an instrumented agent's production traces into an offline eval loop: mine bad traces, build a failure taxonomy, capture cases in a remote Braintrust dataset, write scorers and an eval, iterate on prompts/tools, and only then push online scorers. |
+| [`braintrust-automations-workflow`](./skills/braintrust-automations-workflow/SKILL.md) | Set up and manage alerts, scheduled Loop jobs, and Patterns automations, including Slack or webhook delivery. |
+| [`braintrust-bro`](./skills/braintrust-bro/SKILL.md) | Restate the last response in simple, concise language without jargon. |
+| [`braintrust-evaluator-workflow`](./skills/braintrust-evaluator-workflow/SKILL.md) | Create, test, refine, and deploy scorers and classifiers, backfill results, and visualize their performance. |
+| [`braintrust-topics-workflow`](./skills/braintrust-topics-workflow/SKILL.md) | Configure and evaluate Topics pipelines, including preprocessors, facets, clustering, and historical processing. |
+| [`braintrust-pattern-analysis`](./skills/braintrust-pattern-analysis/SKILL.md) | Investigate recurring behaviors in project traces and create or update Patterns with validated evidence. |
+| [`braintrust-patterns-slack-digest`](./skills/braintrust-patterns-slack-digest/SKILL.md) | Build and deliver a ranked Slack digest after a scheduled Patterns analysis. |
 
 More skills will be added here over time.
 
@@ -27,8 +33,16 @@ skills/
 ## Prerequisites
 
 - A [Braintrust account](https://braintrust.dev).
-- The [`bt` CLI](https://github.com/braintrustdata/bt) installed and authenticated
-  (`bt setup`, or `BRAINTRUST_API_KEY` in CI). Individual skills may list more.
+- For `agent-auto-improvement`, the [`bt` CLI](https://github.com/braintrustdata/bt)
+  installed and authenticated (`bt setup`, or `BRAINTRUST_API_KEY` in CI).
+- For the automation, evaluator, Topics, and Patterns workflows, an authenticated
+  Braintrust MCP connection exposing the tools named in the skill, with access to
+  the target project. Installing a skill does not install or enable those tools.
+- For the Patterns Slack digest, a sandbox with Python 3 and a configured Slack
+  delivery action. The digest follows Patterns analysis; it does not investigate traces.
+
+Individual skills describe required approvals, integrations, and optional UI tools.
+`braintrust-bro` does not require Braintrust tools.
 
 ## Install
 
