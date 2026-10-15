@@ -63,7 +63,7 @@ Use `create_scheduled_loop_job` when Loop should investigate or summarize every 
 
 Patterns is the most common scheduled Loop job. Use it when the user wants recurring issues or trends discovered from project traces. Call `create_scheduled_loop_job` with the user-approved schedule and window. Use the current default Codex model. Unless the user asks otherwise, run at 9 AM on weekdays in their timezone and deliver results to Slack. Resolve the Slack workspace and channel with `list_slack_channels` before creation (see "Resolving Slack delivery" above).
 
-Use `braintrust-pattern-analysis` as the source of truth for Patterns analysis. The scheduled prompt below loads it. Omit `formatting_prompt` from the Slack action so the runtime applies the current Patterns Slack formatting instructions; set it only when the user explicitly requests custom formatting. Preserve these Patterns-specific fields:
+Use `braintrust/pattern-analysis` with `load_braintrust_skill` as the source of truth for Patterns analysis. The scheduled prompt below loads it. Omit `formatting_prompt` from the Slack action so the runtime applies the current Patterns Slack formatting instructions; set it only when the user explicitly requests custom formatting. Preserve these Patterns-specific fields:
 
 ```yaml
 event_type: windowed
@@ -71,7 +71,7 @@ product_origin: patterns
 status: active
 loop:
   prompt: |
-    Load and follow `braintrust-pattern-analysis`. Autonomously investigate the current automation window and create or update the representative set of material patterns.
+    Load and follow `braintrust/pattern-analysis`. Autonomously investigate the current automation window and create or update the representative set of material patterns.
   include_trigger_input: false
   agent_slug: loop-chat
   auto_approve_tools:
