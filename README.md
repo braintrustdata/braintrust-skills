@@ -52,11 +52,55 @@ into the correct directory for your agent automatically:
 gh skill install braintrustdata/braintrust-skills agent-auto-improvement --agent claude-code
 ```
 
-### skills.sh
+### Vercel Skills (`npx skills`)
+
+Use the [Vercel Skills CLI](https://github.com/vercel-labs/skills) from the project where
+you want to use the skills. Requires Node.js 22.20+ and npm.
 
 ```bash
+# Browse the skills in this repository without installing
+npx skills add braintrustdata/braintrust-skills --list
+
+# Choose skills and target agents interactively
 npx skills add braintrustdata/braintrust-skills
+
+# Install one skill for a specific agent
+npx skills add braintrustdata/braintrust-skills --skill agent-auto-improvement --agent claude-code
+
+# Install across projects instead of only in the current project
+npx skills add braintrustdata/braintrust-skills --global
 ```
+
+Project installation is the default. Use `--skill pii-scrubbing` to select the other
+skill, or `--agent codex` to target Codex.
+
+### Sentry dotagents
+
+Use [dotagents](https://docs.sentry.io/ai/dotagents/) to declare skills as project
+dependencies in `agents.toml` and pin their versions in `agents.lock`. Run these commands
+from your project's root:
+
+```bash
+# Initialize once for a project that does not yet have agents.toml
+npx @sentry/dotagents init
+
+# Add either or both skills from this repository
+npx @sentry/dotagents add braintrustdata/braintrust-skills --name agent-auto-improvement
+npx @sentry/dotagents add braintrustdata/braintrust-skills --name pii-scrubbing
+
+# Install the declared dependencies
+npx @sentry/dotagents install
+```
+
+Set the `agents` field in `agents.toml` to your target tools, for example
+`agents = ["claude", "codex"]`. dotagents installs skills into `.agents/skills/` and
+creates the appropriate agent links; run `npx @sentry/dotagents sync` after changing
+agent targets.
+
+Commit `agents.toml` and `agents.lock` so teammates can restore the same versions with
+`npx @sentry/dotagents install --frozen`. By default, dotagents also expects installed
+skills to be committed; set `gitignore = true` in `agents.toml` if you prefer to install
+them after cloning.
 
 ### Manual / symlink
 
