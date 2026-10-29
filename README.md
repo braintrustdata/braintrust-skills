@@ -13,6 +13,7 @@ GitHub Copilot, opencode, and any other tool that reads the open skill format.
 | Skill | Description |
 | --- | --- |
 | [`agent-auto-improvement`](./skills/agent-auto-improvement/SKILL.md) | Turn an instrumented agent's production traces into an offline eval loop: mine bad traces, build a failure taxonomy, capture cases in a remote Braintrust dataset, write scorers and an eval, iterate on prompts/tools, and only then push online scorers. |
+| [`skill-health`](./skills/skill-health/SKILL.md) | Measure how coding agents load and use a repo's skills from coding-agent traces in Braintrust (context cost, reloads, what goes wrong after loading), capture the failures in a Braintrust dataset for evals, fix the weakest skills, and re-check after changes ship. |
 | [`pii-scrubbing`](./skills/pii-scrubbing/SKILL.md) | Connect the export hook and traverse span fields, then apply the requested scrubbing logic or ask if unspecified. Includes LLM message-redaction examples for Python/TypeScript native and OpenTelemetry, Java, Go, and Ruby. |
 
 More skills will be added here over time.
@@ -31,6 +32,8 @@ skills/
 - A [Braintrust account](https://braintrust.dev).
 - For `agent-auto-improvement`, the [`bt` CLI](https://github.com/braintrustdata/bt)
   installed and authenticated (`bt setup`, or `BRAINTRUST_API_KEY` in CI).
+- For `skill-health`, coding-agent traces in a Braintrust project (via the Braintrust
+  coding-agent plugins or `bt trace`), and a way to run SQL against it (Braintrust MCP or `bt`).
 - For the automation, evaluator, Topics, and Patterns workflows, an authenticated
   Braintrust MCP connection exposing the tools named in the skill, with access to
   the target project. Installing a skill does not install or enable those tools.
