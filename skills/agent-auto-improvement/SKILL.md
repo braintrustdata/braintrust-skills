@@ -25,7 +25,7 @@ The loop is:
 
 - The app is instrumented with the Braintrust SDK and logging traces to a project. If not, run `bt setup instrument` first.
 - The `bt` CLI is installed and authenticated (`bt setup`, or `BRAINTRUST_API_KEY` in CI).
-- SQL reference: `https://www.braintrust.dev/docs/reference/sql` (also prefetched at `.bt/skills/docs/reference/sql.md` if `bt setup skills` ran).
+- SQL reference: `https://docs.braintrust.dev/reference/sql` (also prefetched at `.bt/skills/docs/reference/sql.md` if `bt setup skills` ran).
 
 ## Workflow
 
