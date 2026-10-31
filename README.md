@@ -15,6 +15,7 @@ GitHub Copilot, opencode, and any other tool that reads the open skill format.
 | [`agent-auto-improvement`](./skills/agent-auto-improvement/SKILL.md) | Turn an instrumented agent's production traces into an offline eval loop: mine bad traces, build a failure taxonomy, capture cases in a remote Braintrust dataset, write scorers and an eval, iterate on prompts/tools, and only then push online scorers. |
 | [`skill-health`](./skills/skill-health/SKILL.md) | Measure how coding agents load and use a repo's skills from coding-agent traces in Braintrust (context cost, reloads, what goes wrong after loading), capture the failures in a Braintrust dataset for evals, fix the weakest skills, and re-check after changes ship. |
 | [`pii-scrubbing`](./skills/pii-scrubbing/SKILL.md) | Connect the export hook and traverse span fields, then apply the requested scrubbing logic or ask if unspecified. Includes LLM message-redaction examples for Python/TypeScript native and OpenTelemetry, Java, Go, and Ruby. |
+| [`mcp-instrumentation`](./skills/mcp-instrumentation/SKILL.md) | Instrument JavaScript/TypeScript or Python MCP servers with Braintrust and verify real MCP traces, with permission checkpoints for optional agent intent, feedback tools, Topics, and Patterns. |
 
 More skills will be added here over time.
 
@@ -132,6 +133,13 @@ Once installed, ask your agent to do the thing the skill describes — for the
 `agent-auto-improvement` skill, e.g. *"write evals for my agent's first tool call"* or
 *"set up an auto-improvement loop for the routing decision"*. In Claude Code you can also
 invoke a skill directly by name, e.g. `/agent-auto-improvement`.
+
+## Evaluating skills
+
+The [Braintrust eval suite](./evals/README.md) tests the `mcp-instrumentation`
+workflow, intent summaries, and feedback investigation instructions. Run
+`npm ci`, configure your organization as described there, then use `npm run eval:smoke`
+for a first experiment or `npm run eval` for the full suite.
 
 ## License
 

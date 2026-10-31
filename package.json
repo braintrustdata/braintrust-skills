@@ -1,0 +1,31 @@
+{
+  "name": "braintrust-skills",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.20.0"
+  },
+  "scripts": {
+    "eval": "bt eval evals/mcp-instrumentation",
+    "eval:workflow": "bt eval evals/mcp-instrumentation/workflow.eval.ts",
+    "eval:intent": "bt eval evals/mcp-instrumentation/intent.eval.ts",
+    "eval:feedback": "bt eval evals/mcp-instrumentation/feedback.eval.ts",
+    "eval:smoke": "bt eval evals/mcp-instrumentation/workflow.eval.ts --first 1",
+    "eval:calibration": "bt eval evals/calibration/judge.eval.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test evals/**/*.test.ts"
+  },
+  "overrides": {
+    "braintrust": {
+      "minimatch": "11.0.2"
+    }
+  },
+  "devDependencies": {
+    "@types/node": "22.19.0",
+    "braintrust": "3.40.0",
+    "openai": "7.45.1",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "zod": "4.6.7"
+  }
+}
