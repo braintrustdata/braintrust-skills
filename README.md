@@ -15,6 +15,7 @@ GitHub Copilot, opencode, and any other tool that reads the open skill format.
 | [`agent-auto-improvement`](./skills/agent-auto-improvement/SKILL.md) | Turn an instrumented agent's production traces into an offline eval loop: mine bad traces, build a failure taxonomy, capture cases in a remote Braintrust dataset, write scorers and an eval, iterate on prompts/tools, and only then push online scorers. |
 | [`skill-health`](./skills/skill-health/SKILL.md) | Measure how coding agents load and use a repo's skills from coding-agent traces in Braintrust (context cost, reloads, what goes wrong after loading), capture the failures in a Braintrust dataset for evals, fix the weakest skills, and re-check after changes ship. |
 | [`pii-scrubbing`](./skills/pii-scrubbing/SKILL.md) | Connect the export hook and traverse span fields, then apply the requested scrubbing logic or ask if unspecified. Includes LLM message-redaction examples for Python/TypeScript native and OpenTelemetry, Java, Go, and Ruby. |
+| [`improve-braintrust-instrumentation`](./skills/improve-braintrust-instrumentation/SKILL.md) | Review and improve custom instrumentation against the Braintrust instrumentation spec, check SDK versions, and identify SDK issues to report. |
 
 More skills will be added here over time.
 
@@ -74,8 +75,8 @@ npx skills add braintrustdata/braintrust-skills --skill agent-auto-improvement -
 npx skills add braintrustdata/braintrust-skills --global
 ```
 
-Project installation is the default. Use `--skill pii-scrubbing` to select the other
-skill, or `--agent codex` to target Codex.
+Project installation is the default. Use `--skill` to select a skill by name, or
+`--agent codex` to target Codex.
 
 ### Sentry dotagents
 
