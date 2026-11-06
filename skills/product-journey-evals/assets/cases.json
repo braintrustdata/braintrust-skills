@@ -1,0 +1,77 @@
+[
+  {
+    "input": {
+      "id": "braintrust-plan-selection",
+      "url": "https://www.braintrust.dev/pricing",
+      "goal": "Choose a suitable starting plan for a small team trying Braintrust. Find the entry plan, its stated limits, and the next step to start using it. Stop before signing up or submitting any form.",
+      "persona": "A team lead evaluating a new product without an existing account.",
+      "allowed_domains": [
+        "www.braintrust.dev",
+        "braintrust.dev"
+      ],
+      "allowed_actions": [
+        "Read public pages, follow navigation links, and inspect plan-selection controls without submitting forms or changing account state."
+      ],
+      "criteria": [
+        {
+          "id": "starting-plan",
+          "description": "Identify the entry plan and its stated price or trial terms from the product."
+        },
+        {
+          "id": "limits",
+          "description": "Find the published limits relevant to a small team."
+        },
+        {
+          "id": "next-step",
+          "description": "Identify the control or route for starting with the selected plan, without completing signup."
+        }
+      ]
+    },
+    "expected": {
+      "completion_evidence": "Observed pricing information and the actual route or control for starting with a suitable plan; no purchase or completed signup is required."
+    },
+    "metadata": {
+      "journey_kind": "plan-selection",
+      "prompt_revision": "2",
+      "account_state": "public-only"
+    }
+  },
+  {
+    "input": {
+      "id": "braintrust-first-trace-docs",
+      "url": "https://www.braintrust.dev/docs",
+      "goal": "Using only the public docs, find how a new Python user can send their first trace to Braintrust. Identify setup prerequisites, the minimal tracing API, and where to view the result. Do not install software, create accounts, or send a trace.",
+      "persona": "A Python developer new to Braintrust, with no existing account or SDK setup.",
+      "allowed_domains": [
+        "www.braintrust.dev",
+        "braintrust.dev",
+        "docs.braintrust.dev"
+      ],
+      "criteria": [
+        {
+          "id": "prerequisites",
+          "description": "Locate documented account, credential, and package prerequisites."
+        },
+        {
+          "id": "tracing-api",
+          "description": "Locate a minimal documented Python tracing example and identify its APIs."
+        },
+        {
+          "id": "view-trace",
+          "description": "Locate documented instructions for finding the trace in Braintrust."
+        }
+      ],
+      "allowed_actions": [
+        "Read and navigate public documentation; do not create accounts, install software, or send API requests that change state."
+      ]
+    },
+    "expected": {
+      "completion_evidence": "Observed public documentation supporting each criterion, including setup prerequisites, the Python tracing API, and the location for viewing traces. A docs-only task does not require installing software, creating an account, or actually emitting a trace."
+    },
+    "metadata": {
+      "journey_kind": "docs",
+      "prompt_revision": "1",
+      "account_state": "public-only"
+    }
+  }
+]

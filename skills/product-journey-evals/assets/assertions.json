@@ -1,0 +1,64 @@
+{
+  "version": "product-journey-evals-v3",
+  "source": "https://github.com/braintrustdata/docs-agent-eval/blob/381ad8d25d5fc5d938e3e9b6d58cfa2da1ba7f23/src/eval.ts",
+  "judges": {
+    "task_completed": {
+      "choices": {
+        "COMPLETE": 1.0,
+        "PARTIAL": 0.4,
+        "INCOMPLETE": 0.0
+      },
+      "rubric": "COMPLETE: every stated journey criterion is visibly satisfied. PARTIAL: meaningful progress, but at least one criterion remains unsatisfied. INCOMPLETE: no meaningful progress or only a plan. Judge only the requested outcome and authorized actions; do not require unrelated account creation, purchases, code changes, or execution. Require observed tool evidence, not unsupported claims of success."
+    },
+    "setup_friction": {
+      "choices": {
+        "NONE": 1,
+        "MINOR": 0.75,
+        "HIGH": 0.4,
+        "BLOCKED": 0,
+        "NOT_REQUIRED": null
+      },
+      "rubric": "Evaluate prerequisites and initial setup needed to begin the requested task: signup/login, credentials, permissions, configuration, confusing onboarding, and required human assistance. NONE: required setup was straightforward. MINOR: small obstacles resolved with little effort. HIGH: substantial retries, backtracking, unclear prerequisites, or repeated assistance. BLOCKED: required setup could not be completed. NOT_REQUIRED: no setup was needed in the provided starting state. Legitimate authorization boundaries are not product defects; explain whether each obstacle came from product, agent, or environment. Judge the supplied starting state, not hypothetical fresh-user setup."
+    },
+    "errors": {
+      "choices": {
+        "NO_ERRORS": 1,
+        "RECOVERED": 0.6,
+        "BLOCKING": 0
+      },
+      "rubric": "Inventory actual errors encountered, including recovered errors, from tool responses and observed product states. NO_ERRORS: no observed errors. RECOVERED: errors occurred but were resolved. BLOCKING: at least one task-blocking error remained unresolved. In the explanation list the observed errors, frequency/repeated attempts where visible, severity, recovery, and product/agent/environment/unknown attribution, citing tool call or span IDs. Normal followed redirects are not errors. A zero process exit code does not prove no errors occurred; inspect the tool outputs. Do not invent failures from an ambiguous observation."
+    },
+    "doc_quality": {
+      "choices": {
+        "AVAILABLE_USEFUL": 1,
+        "AVAILABLE_GAPS": 0.7,
+        "HARD_TO_FIND": 0.4,
+        "MISSING_OR_UNUSABLE": 0,
+        "NOT_NEEDED": null
+      },
+      "rubric": "First determine from the actual journey whether the agent needed or consulted documentation/help. NOT_NEEDED: the task did not require docs and the agent did not consult them; this is not a positive or negative quality score. If docs were needed or consulted, assess availability, discoverability, relevance, correctness, and usefulness: AVAILABLE_USEFUL: accessible and sufficient to proceed. AVAILABLE_GAPS: accessible but incomplete, unclear, or required piecing together guidance. HARD_TO_FIND: needed guidance was difficult to locate after meaningful searching. MISSING_OR_UNUSABLE: needed docs were absent, inaccessible, or misleading enough to prevent progress. An unsuccessful search is applicable, not NOT_NEEDED. Distinguish missing product docs from tool/network/access restrictions; if the environment prevents assessment, choose UNSCORABLE. Cite observed help/doc calls and resulting progress; do not infer docs quality from page counts alone."
+    }
+  },
+  "deterministic": {
+    "efficiency": {
+      "full_credit_at": 8,
+      "zero_credit_at": 30
+    },
+    "speed": {
+      "full_credit_at": 60,
+      "zero_credit_at": 300
+    }
+  },
+  "dx_weights": {},
+  "optional_judges": {
+    "journey_clarity": {
+      "choices": {
+        "CLEAR": 1.0,
+        "SOME_FRICTION": 0.75,
+        "CONFUSING": 0.5,
+        "MISLEADING": 0.2
+      },
+      "rubric": "Assess whether the product makes the next step and its outcome understandable for the stated persona. CLEAR: the path and feedback were clear throughout. SOME_FRICTION: minor ambiguity or extra navigation, resolved without substantial backtracking. CONFUSING: repeated backtracking, unclear labels, inconsistent instructions, or unclear state. MISLEADING: observed labels, instructions, or feedback led to an incorrect action or false expectation. Ground the label in actual interactions; distinguish product design from agent mistakes and environment problems. Do not use documentation page counts as a proxy for general product usability."
+    }
+  }
+}

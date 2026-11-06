@@ -16,6 +16,7 @@ GitHub Copilot, opencode, and any other tool that reads the open skill format.
 | [`skill-health`](./skills/skill-health/SKILL.md) | Measure how coding agents load and use a repo's skills from coding-agent traces in Braintrust (context cost, reloads, what goes wrong after loading), capture the failures in a Braintrust dataset for evals, fix the weakest skills, and re-check after changes ship. |
 | [`pii-scrubbing`](./skills/pii-scrubbing/SKILL.md) | Connect the export hook and traverse span fields, then apply the requested scrubbing logic or ask if unspecified. Includes LLM message-redaction examples for Python/TypeScript native and OpenTelemetry, Java, Go, and Ruby. |
 | [`improve-braintrust-instrumentation`](./skills/improve-braintrust-instrumentation/SKILL.md) | Review and improve custom instrumentation against the Braintrust instrumentation spec, check SDK versions, and identify SDK issues to report. |
+| [`product-journey-evals`](./skills/product-journey-evals/SKILL.md) | Evaluate product journeys without source access. Trace agents with `bt trace run --parent`, score setup, speed, efficiency, errors, and conditional docs quality, and push a Braintrust custom view for experiment traces. |
 
 More skills will be added here over time.
 
@@ -35,6 +36,11 @@ skills/
   installed and authenticated (`bt setup`, or `BRAINTRUST_API_KEY` in CI).
 - For `skill-health`, coding-agent traces in a Braintrust project (via the Braintrust
   coding-agent plugins or `bt trace`), and a way to run SQL against it (Braintrust MCP or `bt`).
+- For `product-journey-evals`, an authenticated `bt` CLI with `trace run --parent`, a
+  configured Claude Code or Codex CLI with appropriate web/browser tools, and Python
+  with `braintrust`, `jsonschema`, `autoevals`, and `openai`. The skill includes a runnable
+  product journey eval starter with extensible assertions informed by `braintrustdata/docs-agent-eval`.
+  Publishing its custom view also needs Node.js and `bt custom-views` support.
 - For the automation, evaluator, Topics, and Patterns workflows, an authenticated
   Braintrust MCP connection exposing the tools named in the skill, with access to
   the target project. Installing a skill does not install or enable those tools.
